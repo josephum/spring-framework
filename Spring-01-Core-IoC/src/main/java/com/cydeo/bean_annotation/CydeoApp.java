@@ -15,6 +15,9 @@ public class CydeoApp {
         String str = container.getBean(String.class);
         System.out.println(str);
 
+        Integer i = container.getBean(Integer.class);
+        System.out.println(i);
+
 
 
     }
