@@ -3,6 +3,7 @@ package com.example.repository;
 import com.example.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -53,5 +54,57 @@ public interface EmployeeRepository extends JpaRepository<Employee,Long> {
 
     @Query("select e from Employee e where e.email=?1 and e.salary=?2")
     Optional<Employee> getEmployeeDetail(String email, Integer salary);
+
+    // Not equal
+    @Query("select e from Employee e where e.salary <> ?1")
+    List<Employee> getEmployeeSalaryNotEqual(int salary);
+
+    // Like/contains/startsWith/EndsWith
+    @Query("select e from Employee e where e.firstName like ?1")
+    List<Employee> getEmployeeFirstNameLike(String pattern);
+
+    // less than
+    @Query("select e from Employee e where e.salary < ?1")
+    List<Employee> getEmployeeSalaryLessThan(int salary);
+
+    // greater than
+    @Query("select e from Employee e where e.salary > ?1")
+    List<Employee> getEmployeeSalaryGreaterThan(int salary);
+
+    // Before
+    @Query("select e from Employee e where e.hireDate > ?1")
+    List<Employee> getEmployeeHireDateBefore(LocalDate date);
+
+    // Between
+    @Query("select e from Employee e where e.salary between ?1 and ?2")
+    List<Employee> getEmployeeSalaryBetween(int salary1,int salary2);
+
+    // Null
+    @Query("select e from Employee e where e.email is null")
+    List<Employee> getEmployeeEmailIsNull();
+
+    // Not null
+    @Query("select e from Employee e where e.email is not null")
+    List<Employee> getEmployeeEmailIsNotNull();
+
+    // Sorting in ascending order
+    @Query("select e from Employee e order by e.salary")
+    List<Employee> getEmployeeSalaryOrderAsc();
+
+    // Sorting in desc order
+    @Query("select e from Employee e order by e.salary desc")
+    List<Employee> getEmployeeSalaryOrderADesc();
+
+    // Native query
+    @Query(value = "select * from employees where salary ?1",nativeQuery = true)
+    List<Employee> readEmployeeDetailBySalary(int salary);
+
+    // JPQL - Named parameters
+    @Query("select e from Employee e where e.salary = :salary")
+    List<Employee> getEmployeeSalary(@Param("salary") int salary);
+
+
+
+
 
 }
