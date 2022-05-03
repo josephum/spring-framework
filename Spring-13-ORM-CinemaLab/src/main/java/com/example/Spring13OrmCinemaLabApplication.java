@@ -9,10 +9,10 @@ import org.springframework.context.annotation.Bean;
 import javax.sql.DataSource;
 
 @SpringBootApplication
-public class Spring13OrmCinemaLab2Application {
+public class Spring13OrmCinemaLabApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Spring13OrmCinemaLab2Application.class, args);
+        SpringApplication.run(Spring13OrmCinemaLabApplication.class, args);
     }
 
     @Bean

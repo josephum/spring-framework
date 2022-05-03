@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>Spring-13-ORM-CinemaLab2</artifactId>
+    <artifactId>Spring-13-ORM-CinemaLab</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Spring-13-ORM-CinemaLab2</name>
-    <description>Spring-13-ORM-CinemaLab2</description>
+    <name>Spring-13-ORM-CinemaLab</name>
+    <description>Spring-13-ORM-CinemaLab</description>
     <properties>
         <java.version>11</java.version>
     </properties>

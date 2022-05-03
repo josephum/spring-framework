@@ -8,7 +8,9 @@ import com.example.repository.RegionRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.util.List;
+
 
 @Component
 public class DataGenerator implements CommandLineRunner {
@@ -26,6 +28,7 @@ public class DataGenerator implements CommandLineRunner {
     }
 
     @Override
+    @Transactional
     public void run(String... args) throws Exception {
 
         System.out.println("---------------REGION START---------------");
@@ -78,7 +81,7 @@ public class DataGenerator implements CommandLineRunner {
 
         System.out.println("---------------------------");
 
-//        courseRepository.streamByCategory("Spring").forEach(System.out::println);
+        courseRepository.streamByCategory("Spring").forEach(System.out::println);
 
 
         System.out.println("---------------COURSE END---------------");

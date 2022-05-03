@@ -1,7 +1,9 @@
 package com.example.entity;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import net.bytebuddy.asm.Advice;
 
 import javax.persistence.Column;
@@ -11,7 +13,8 @@ import javax.persistence.ManyToOne;
 import java.time.LocalDate;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class Ticket extends BaseEntity{
 
@@ -26,4 +29,14 @@ public class Ticket extends BaseEntity{
 
     @ManyToOne(fetch = FetchType.LAZY)
     private User userAccount;
+
+    // We need to override toString becasuse some variables are not ready to read because FetchType.LAZY
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "seatNumber=" + seatNumber +
+                ", rowNumber=" + rowNumber +
+                ", dateTime=" + dateTime +
+                '}';
+    }
 }
