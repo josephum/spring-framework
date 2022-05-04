@@ -21,7 +21,7 @@ public class DataGenerator implements CommandLineRunner {
     public void run(String... args) throws Exception {
         System.out.println();
 
-//        System.out.println(accountRepository.findAllByCountryOrState("Canada", "Quebec"));
+        System.out.println(accountRepository.findAllByCountryOrState("United States", "New York"));
 
 
     }
