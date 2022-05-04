@@ -21,7 +21,7 @@ public class Cinema extends BaseEntity{
     @ManyToOne(fetch = FetchType.LAZY)
     private Location location;
 
-    // We need to override toString becasuse some variables are not ready to read because FetchType.LAZY
+    // We need to override toString because some variables are not ready to read because FetchType.LAZY
     @Override
     public String toString() {
         return "Cinema{" +

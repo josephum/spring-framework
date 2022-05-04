@@ -49,7 +49,7 @@ public interface CinemaRepository extends JpaRepository<Cinema,Long> {
     List<Cinema> sortByName();
 
     //Write a native query to distinct all cinemas by sponsored name
-    @Query(value = "SELECT DISTINCT sponsor_name FROM cinema",nativeQuery = true)
-    List<Cinema> distinctBySponsorName();
+    @Query(value = "SELECT * FROM cinema c WHERE c.sponsored_name = ?1",nativeQuery = true)
+    List<Cinema> distinctBySponsorName(@Param("sponsoredName") String sponsoredName);
 
 }
