@@ -47,8 +47,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
     // ------------------- Native QUERIES ------------------- //
 
     //Write a native query that returns all users that contain a specific name?
-    @Query(value = "SELECT * FROM user_account WHERE username ILIKE CONCAT('%',?1,'%')",nativeQuery = true)
-    List<User> retrieveAllByUsernameContaining(@Param("keyword") String keyword);
+    @Query(value = "SELECT * FROM user_account ua JOIN account_details ad " +
+            "ON ua.account_details_id = ad.id WHERE ad.name ILIKE CONCAT('%',?1,'%')",nativeQuery = true)
+    List<User> retrieveAllByNameContaining(@Param("keyword") String keyword);
 
     //Write a native query that returns all users?
     @Query(value = "SELECT * FROM user_account",nativeQuery = true)
@@ -56,7 +57,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     //Write a native query that returns all users in the range of ages?
     @Query(value = "SELECT * FROM user_account ua JOIN account_details ad " +
-            "ON ua.id = ad.id WHERE ad.age BETWEEN ?1 AND ?2", nativeQuery = true)
+            "ON ua.account_details_id = ad.id WHERE ad.age BETWEEN ?1 AND ?2", nativeQuery = true)
     List<User> retrieveAllUsersInRangeOfAge(@Param("age1") Integer age1, @Param("age2") Integer age2);
 
     //Write a native query to read a user by email?
