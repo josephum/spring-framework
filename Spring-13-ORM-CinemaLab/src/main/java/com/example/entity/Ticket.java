@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -22,7 +23,7 @@ public class Ticket extends BaseEntity{
     private Integer rowNumber;
 
     @Column(columnDefinition = "TIMESTAMP")
-    private LocalDate dateTime;
+    private LocalDateTime dateTime;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private MovieCinema movieCinema;

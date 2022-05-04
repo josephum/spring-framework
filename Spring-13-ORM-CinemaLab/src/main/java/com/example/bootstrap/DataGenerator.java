@@ -6,6 +6,7 @@ import com.example.repository.AccountRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Component
@@ -39,8 +40,8 @@ public class DataGenerator implements CommandLineRunner {
         System.out.println(movieCinemaRepository.countAllByCinemaId(4L));
         System.out.println(movieCinemaRepository.retrieveAllByLocationName("AMC Empire 25"));
         System.out.println(ticketRepository.fetchAllTicketsByUserAccount(4L));
-//        System.out.println(ticketRepository.fetchAllTicketsWithRangeOfDates());
-//        System.out.println(ticketRepository.f);
+        System.out.println(ticketRepository.fetchAllTicketsWithRangeOfDates(LocalDateTime.now().minusDays(25), LocalDateTime.now()));
+        System.out.println(ticketRepository.retrieveAllBySearchCriteria("it"));
 
         System.out.println(userRepository.findAllByAccountAgeGreaterThan(18));
         System.out.println(userRepository.retrieveAllUsersInRangeOfAge(32,38));
