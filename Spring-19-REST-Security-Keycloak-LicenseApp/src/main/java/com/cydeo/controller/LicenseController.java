@@ -25,7 +25,7 @@ public class LicenseController {
         return ResponseEntity.ok(license);
     }
 
-    @RolesAllowed({"ADMIN", "USER"})
+    @RolesAllowed({"ADMIN","USER"})
     @PutMapping
     public ResponseEntity<License> updateLicense(@RequestBody License request) {
         return ResponseEntity.ok(licenseService.updateLicense(request));
